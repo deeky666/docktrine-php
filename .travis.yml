@@ -13,8 +13,6 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install docker-engine
 
-install: true
-
 before_script:
   - docker build --build-arg PHP_VERSION=${PHP_VERSION} -t deeky666/php-${PHP_VERSION} .
 
