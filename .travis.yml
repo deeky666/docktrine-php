@@ -1,0 +1,13 @@
+sudo: required
+
+services:
+  - docker
+
+env:
+  - PHP_VERSION=5.4.45
+  - PHP_VERSION=5.5.31
+  - PHP_VERSION=5.6.17
+  - PHP_VERSION=7.0.2
+
+before_install:
+  - docker build --build-arg PHP_VERSION=${PHP_VERSION} -t deeky666/php-${PHP_VERSION} .
