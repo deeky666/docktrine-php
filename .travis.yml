@@ -12,14 +12,21 @@ env:
 before_install:
   - sudo apt-get update
   - sudo apt-get install docker-engine
+
+install: true
+
+before_script:
   - docker build --build-arg PHP_VERSION=${PHP_VERSION} -t deeky666/php-${PHP_VERSION} .
 
 script:
   - docker run deeky666/php-${PHP_VERSION} -v
-  - docker run deeky666/php-${PHP_VERSION} -d extension=pdo.so -d extension=pdo_sqlite.so
-  - docker run deeky666/php-${PHP_VERSION} -d extension=pdo.so -d extension=pdo_pgsql.so
-  - docker run deeky666/php-${PHP_VERSION} -d extension=pdo.so -d extension=pdo_mysql-libmysql.so
-  - docker run deeky666/php-${PHP_VERSION} -d extension=pdo.so -d extension=mysqnld.so -d extension=pdo_mysql-mysqlnd.so
-  - docker run deeky666/php-${PHP_VERSION} -d extension=sqlite3.so
-  - docker run deeky666/php-${PHP_VERSION} -d extension=mysqli-libmysql.so
-  - docker run deeky666/php-${PHP_VERSION} -d extension=mysqnld.so -d extension=mysqli-mysqlnd.so
+  - docker run deeky666/php-${PHP_VERSION} -d extension=pdo.so -d extension=pdo_sqlite.so -m
+  - docker run deeky666/php-${PHP_VERSION} -d extension=pdo.so -d extension=pdo_pgsql.so -m
+  - docker run deeky666/php-${PHP_VERSION} -d extension=pdo.so -d extension=pdo_mysql-libmysql.so -m
+  - docker run deeky666/php-${PHP_VERSION} -d extension=pdo.so -d extension=mysqlnd.so -d extension=pdo_mysql-mysqlnd.so -m
+  - docker run deeky666/php-${PHP_VERSION} -d extension=sqlite3.so -m
+  - docker run deeky666/php-${PHP_VERSION} -d extension=mysqli-libmysql.so -m
+  - docker run deeky666/php-${PHP_VERSION} -d extension=mysqlnd.so -d extension=mysqli-mysqlnd.so -m
+
+after_success:
+  - if [ ! -z "$TRAVIS_TAG" ]; then docker login --email=$DOCKER_EMAIL --username=$DOCKER_USERNAME --password=$DOCKER_PASSWORD && docker push deeky666/php-${PHP_VERSION} ; fi
