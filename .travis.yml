@@ -10,7 +10,8 @@ env:
   - PHP_VERSION=7.0.2
 
 before_install:
-  - sudo apt-get install docker-engine
+  - sudo apt-get update -y --allow-unauthenticated
+  - sudo apt-get install -y docker-engine
 
 before_script:
   - docker build --build-arg PHP_VERSION=${PHP_VERSION} -t deeky666/php-${PHP_VERSION} .
