@@ -4,9 +4,6 @@ services:
   - docker
 
 env:
-  - PHP_VERSION=5.4.45
-  - PHP_VERSION=5.5.31
-  - PHP_VERSION=5.6.17
   - PHP_VERSION=7.0.2
 
 before_install:
@@ -27,4 +24,4 @@ script:
   - docker run deeky666/php-${PHP_VERSION} -d extension=mysqlnd.so -d extension=mysqli-mysqlnd.so -m
 
 after_success:
-  - if [ ! -z "$TRAVIS_TAG" ]; then docker login --email=$DOCKER_EMAIL --username=$DOCKER_USERNAME --password=$DOCKER_PASSWORD && docker push deeky666/php-${PHP_VERSION} ; fi
+  - if [ ! -z "$TRAVIS_TAG" ]; then docker login --email="$DOCKER_EMAIL" --username="$DOCKER_USERNAME" --password="$DOCKER_PASSWORD" && docker push deeky666/php-${PHP_VERSION} ; fi
