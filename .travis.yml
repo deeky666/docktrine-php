@@ -13,3 +13,13 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install docker-engine
   - docker build --build-arg PHP_VERSION=${PHP_VERSION} -t deeky666/php-${PHP_VERSION} .
+
+script:
+  - docker run deeky666/php-${PHP_VERSION} -v
+  - docker run deeky666/php-${PHP_VERSION} -d extension=pdo.so -d extension=pdo_sqlite.so
+  - docker run deeky666/php-${PHP_VERSION} -d extension=pdo.so -d extension=pdo_pgsql.so
+  - docker run deeky666/php-${PHP_VERSION} -d extension=pdo.so -d extension=pdo_mysql-libmysql.so
+  - docker run deeky666/php-${PHP_VERSION} -d extension=pdo.so -d extension=mysqnld.so -d extension=pdo_mysql-mysqlnd.so
+  - docker run deeky666/php-${PHP_VERSION} -d extension=sqlite3.so
+  - docker run deeky666/php-${PHP_VERSION} -d extension=mysqli-libmysql.so
+  - docker run deeky666/php-${PHP_VERSION} -d extension=mysqnld.so -d extension=mysqli-mysqlnd.so
