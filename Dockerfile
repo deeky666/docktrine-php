@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM deeky666/base
 
 MAINTAINER Steve Müller "deeky666@googlemail.com"
 
@@ -10,10 +10,6 @@ RUN apt-get update -y && \
         autoconf \
         make \
         gcc \
-        libxml2-dev \
-        libmysqlclient-dev \
-        libpq-dev \
-        libaio1 \
         && \
 
     cd /tmp && \
