@@ -122,4 +122,4 @@ script:
   - docker run deeky666/php:${PHP_VERSION} -d extension=mysqlnd.so -d extension=mysqli-mysqlnd.so -m
 
 after_success:
-  - if [ ! -z "$TRAVIS_TAG" ]; then docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" && docker push deeky666/php:${PHP_VERSION} ; fi
+  - if [ ! -z "$TRAVIS_TAG" ]; then docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" && docker push deeky666/php:${PHP_VERSION}; fi
