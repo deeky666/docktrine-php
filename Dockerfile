@@ -65,7 +65,6 @@ RUN apt-get update -y && \
 
     apt-get purge --auto-remove -y wget autoconf make gcc && \
     apt-get clean -y && \
-    apt-get autoclean -y && \
     rm -rf /tmp/php* /usr/local/lib/php/build /usr/local/lib/php/extensions/*/*.a /usr/local/include/php
 
 # Expose volumes for custom configuration, data and log files.
