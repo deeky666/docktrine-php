@@ -123,3 +123,14 @@ script:
 
 after_success:
   - if [ ! -z "$TRAVIS_TAG" ]; then docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" && docker push deeky666/php:${PHP_VERSION}; fi
+
+matrix:
+  fast_finish: true
+  allow_failures:
+    - env: PHP_VERSION=5.4.0 # won't compile with libxml2 >= 2.9
+    - env: PHP_VERSION=5.4.1 # won't compile with libxml2 >= 2.9
+    - env: PHP_VERSION=5.4.2 # won't compile with libxml2 >= 2.9
+    - env: PHP_VERSION=5.4.3 # won't compile with libxml2 >= 2.9
+    - env: PHP_VERSION=5.4.4 # won't compile with libxml2 >= 2.9
+    - env: PHP_VERSION=5.4.5 # won't compile with libxml2 >= 2.9
+    - env: PHP_VERSION=5.4.6 # won't compile with libxml2 >= 2.9
