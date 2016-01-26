@@ -109,7 +109,7 @@ before_install:
   - sudo apt-get install -y docker-engine
 
 before_script:
-  - docker build --build-arg PHP_VERSION=${PHP_VERSION} -t deeky666/php:${PHP_VERSION} .
+  - docker build --force-rm=true --build-arg PHP_VERSION=${PHP_VERSION} -t deeky666/php:${PHP_VERSION} .
 
 script:
   - docker run deeky666/php:${PHP_VERSION} -v
