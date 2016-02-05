@@ -129,18 +129,7 @@ before_script:
   - if [ ! -z "$TRAVIS_TAG" ]; then docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"; fi
   - if [ ! -z "$TRAVIS_TAG" ]; then docker push deeky666/php; fi
 
-script:
-  - docker run deeky666/php:${PHP_VERSION} -v
-  - docker run deeky666/php:${PHP_VERSION} -d extension=pdo.so -d extension=pdo_sqlite.so -m
-  - docker run deeky666/php:${PHP_VERSION} -d extension=pdo.so -d extension=pdo_pgsql.so -m
-  - docker run deeky666/php:${PHP_VERSION} -d extension=pdo.so -d extension=pdo_mysql-libmysql.so -m
-  - docker run deeky666/php:${PHP_VERSION} -d extension=pdo.so -d extension=mysqlnd.so -d extension=pdo_mysql-mysqlnd.so -m
-  - docker run deeky666/php:${PHP_VERSION} -d extension=sqlite3.so -m
-  - docker run deeky666/php:${PHP_VERSION} -d extension=mysqli-libmysql.so -m
-  - docker run deeky666/php:${PHP_VERSION} -d extension=mysqlnd.so -d extension=mysqli-mysqlnd.so -m
-
-after_success:
-  - if [ ! -z "$TRAVIS_TAG" ]; then docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD" && docker push deeky666/php:${PHP_VERSION}; fi
+script: true
 
 matrix:
   fast_finish: true
