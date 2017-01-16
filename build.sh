@@ -45,7 +45,8 @@ rm configure
     --with-pdo-mysql=shared \
     --with-mysqli=shared \
     --with-pdo-pgsql=shared \
-    --with-pdo-sqlite=shared \
+    --without-sqlite \
+    --with-pdo-sqlite=shared,/usr \
     --with-sqlite3=shared \
     $CONFIGURE_OPTIONS \
 
