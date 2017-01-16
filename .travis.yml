@@ -121,7 +121,8 @@ env:
   - PHP_VERSION=7.0.1
   - PHP_VERSION=7.0.2
   - PHP_VERSION=7.0.3
-  - PHP_VERSION=7.0.4 LATEST_MINOR=7.0 LATEST_MAJOR=7 LATEST=true
+  - PHP_VERSION=7.0.4
+  - PHP_VERSION=7.0.5 LATEST_MINOR=7.0 LATEST_MAJOR=7 LATEST=true
 
 before_install:
   - sudo apt-get update -y --allow-unauthenticated
