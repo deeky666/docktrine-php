@@ -148,9 +148,11 @@ before_script:
   - docker run deeky666/php:${PHP_VERSION} -d extension=pdo.so -d extension=pdo_pgsql.so -m
   - docker run deeky666/php:${PHP_VERSION} -d extension=pdo.so -d extension=pdo_mysql-libmysql.so -m
   - docker run deeky666/php:${PHP_VERSION} -d extension=pdo.so -d extension=mysqlnd.so -d extension=pdo_mysql-mysqlnd.so -m
+  - if [[ ${PHP_VERSION} == 7* ]]; then docker run deeky666/php:${PHP_VERSION} -d extension=pdo.so -d extension=pdo_sqlsrv.so; fi
   - docker run deeky666/php:${PHP_VERSION} -d extension=sqlite3.so -m
   - docker run deeky666/php:${PHP_VERSION} -d extension=mysqli-libmysql.so -m
   - docker run deeky666/php:${PHP_VERSION} -d extension=mysqlnd.so -d extension=mysqli-mysqlnd.so -m
+  - if [[ ${PHP_VERSION} == 7* ]]; then docker run deeky666/php:${PHP_VERSION} -d extension=sqlsrv.so; fi
 
   - if [[ ! -z "$TRAVIS_TAG" && ! -z "$LATEST_MINOR" ]]; then docker tag deeky666/php:${PHP_VERSION} deeky666/php:${LATEST_MINOR}; fi
   - if [[ ! -z "$TRAVIS_TAG" && ! -z "$LATEST_MAJOR" ]]; then docker tag deeky666/php:${PHP_VERSION} deeky666/php:${LATEST_MAJOR}; fi
