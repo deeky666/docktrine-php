@@ -4,7 +4,7 @@ MAINTAINER Steve Müller "deeky666@googlemail.com"
 
 ARG PHP_VERSION
 
-ADD build.sh .
+COPY build.sh .
 
 RUN ./build.sh
 
