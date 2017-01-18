@@ -8,6 +8,8 @@ ADD build.sh .
 
 RUN ./build.sh
 
+USER doctrine
+
 # Expose volumes for custom configuration, data and log files.
 VOLUME ["/php/conf.d", "/php/log", "/php/srv"]
 

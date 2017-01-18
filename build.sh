@@ -82,3 +82,4 @@ apt-get purge --auto-remove -y wget autoconf make gcc g++
 apt-get clean -y
 rm -rf /tmp/php* /usr/local/lib/php/build /usr/local/lib/php/extensions/*/*.a /usr/local/include/php /var/lib/apt/lists/*
 
+useradd -m -s /bin/bash doctrine
